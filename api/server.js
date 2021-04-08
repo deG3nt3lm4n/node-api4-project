@@ -1,13 +1,13 @@
 const express = require('express')
 const cors = require('cors')
-const helmet = require('helmet')
+
 
 const userRouter = require('./users/users-router')
 const mw = require('./middleware/middleware')
 
 const server = express()
 
-server.use(helmet())
+
 server.use(express.json())
 server.use(cors())
 server.use(mw.logger)
