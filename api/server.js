@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 
-
 const userRouter = require('./users/users-router')
 const mw = require('./middleware/middleware')
 
