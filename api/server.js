@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 
-// const userRouter = require('./users/users-router')
+const userRouter = require('./users/users-router')
 // const mw = require('./middleware/middleware')
 
 const server = express()
@@ -11,7 +11,7 @@ server.use(cors())
 server.use(express.json())
 // server.use(mw.logger)
 
-// server.use('/api/users', userRouter)
+server.use('/api/users', userRouter)
 
 server.use('/api/', (_,res) => {
   res.json({data: "api is up"})
