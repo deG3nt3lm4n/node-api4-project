@@ -9,8 +9,10 @@ const server = express()
 
 
 server.use(express.json())
-server.use(cors())
+
 server.use(mw.logger)
+server.use(cors())
+
 server.use('/api/users', userRouter)
 
 server.use('/api/', (_,res) => {
