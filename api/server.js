@@ -7,9 +7,9 @@ const mw = require('./middleware/middleware')
 
 const server = express()
 
+server.use(helmet())
 server.use(express.json())
 server.use(cors())
-server.use(helmet())
 server.use(mw.logger)
 server.use('/api/users', userRouter)
 
