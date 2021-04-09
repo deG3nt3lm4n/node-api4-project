@@ -1,13 +1,12 @@
 import React,{useState} from 'react'
+import User from './User'
 
 const initialData = {
   name: ''
 }
 
 
-
 function Users({userData, url}) {
-
   const [user, setUser] = useState(initialData)
 
   const addUser = (user) => {
@@ -20,11 +19,8 @@ function Users({userData, url}) {
       body: JSON.stringify(user)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
-
-
+    .then(data => alert('Congratz you created ', data.name))
   }
-
 
   const onChange = (e) => {
     const {value} = e.target
@@ -36,14 +32,9 @@ function Users({userData, url}) {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
     addUser(user)
-
     setUser(initialData)
-
   }
-
-
 
   return (
     <div className="userDataTable">
@@ -60,9 +51,7 @@ function Users({userData, url}) {
 
       <ul>
         {
-          userData.map(user => {
-            return <li key={user.id}>{user.name}</li>
-          })
+          userData.map(user => <User user={user} url={url} />)
         }
       </ul>
     </div>
