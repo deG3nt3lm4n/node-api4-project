@@ -20,8 +20,10 @@ function User({user, url}) {
     <li key={user.id}>
 
       <span className="username">{user.name}</span>
-
-      <button onClick={() => onDelete(user)}>DEL</button>
+      <div className="buttons">
+        <button onClick={() => console.log('wait for it')}>POSTS</button>
+        <button onClick={() => onDelete(user)}>DEL</button>
+      </div>
 
 
     </li>

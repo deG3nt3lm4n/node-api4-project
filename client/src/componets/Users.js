@@ -40,12 +40,12 @@ function Users({userData, url}) {
     <div className="userDataTable">
       <h2>Users</h2>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="userAddForm">
         <label>
-          Add User:
+          <span className="labelText">Add User:</span>
           <input type="text" value={user.name} onChange={onChange}  />
         </label>
-        <button>Add User</button>
+        <button>Add</button>
       </form>
 
 
