@@ -19,14 +19,14 @@ function App() {
       .then(res => res.json())
       .then(apiData => setData(apiData))
 
-  },[])
+  },[data])
 
 
 
   return (
     <div className="App">
       <Header/>
-      <Users userData={data} />
+      <Users userData={data} url={url} />
     </div>
   );
 }

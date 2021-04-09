@@ -1,14 +1,67 @@
-import React from 'react'
+import React,{useState} from 'react'
 
-function Users({userData}) {
+const initialData = {
+  name: ''
+}
+
+
+
+function Users({userData, url}) {
+
+  const [user, setUser] = useState(initialData)
+
+  const addUser = (user) => {
+
+    fetch(url('/api/users/'),{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+
+
+  }
+
+
+  const onChange = (e) => {
+    const {value} = e.target
+    setUser({
+      ...user,
+      name: value
+    })
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    addUser(user)
+
+    setUser(initialData)
+
+  }
+
+
+
   return (
-    <div>
+    <div className="userDataTable">
       <h2>Users</h2>
+
+      <form onSubmit={onSubmit}>
+        <label>
+          Add User:
+          <input type="text" value={user.name} onChange={onChange}  />
+        </label>
+        <button>Add User</button>
+      </form>
+
+
       <ul>
         {
           userData.map(user => {
-            console.log(user)
-            return <li>{user.name}</li>
+            return <li key={user.id}>{user.name}</li>
           })
         }
       </ul>
